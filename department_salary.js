@@ -64,7 +64,7 @@ department.employees.forEach(function (employee){ // loops through employees
         totalSalary += calculateEmployeeSalary(subordinate); // if subordinate has employees then recursive
     });
 });
-console.log (`Total Salary for ${department.departmentName} : $${totalSalary}`); // pulls up marketing department salary
+console.log (`Total Salary for ${department.departmentName} : $${totalSalary}`); // pulls up department salary
 return totalSalary;
 }
 
@@ -77,6 +77,19 @@ function calculateEmployeeSalary (employee) {
     return employeeTotal;
 }
 
-//testing for a department
+//checking for Marketing department
 const totalSalesSalary = calculateDepartmentSalary(company.departments [0]);
-console.log (`Total Salary for the Sales Department: $${totalSalesSalary}`); // pulls up sales department salary
+console.log (`Total Salary for the Marketing Department: $${totalSalesSalary}`); // pulls up marketing department salary 
+
+
+// Task 3: Create a Function to Calculate the Total Salary for All Departments
+
+function calculateCompanySalary (company) {
+    let companySalary = 0;
+    for (const department of company.departments){
+        companySalary += calculateDepartmentSalary(department);
+    }
+    return companySalary
+}
+const companySalary = calculateCompanySalary(company);
+console.log (`The Company Salary is: $${companySalary}`);
